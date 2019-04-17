@@ -15,10 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-// cancelButton.addEventListener('click', () => {
-//   console.log('clicccked')
-// })
-
   addBtn.addEventListener('click', () => {
     addItem = !addItem
     if (addItem) {addForm.style.display = 'block'

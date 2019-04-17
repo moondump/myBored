@@ -3,7 +3,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Bored</title>
+    <title>myBored</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -22,7 +22,14 @@
       </div>
     </nav>
 
-    <div  class='container item-list'></div>
+    <div id="mydiv">
+
+      <p>Move</p>
+      <p>this</p>
+      <p>DIV</p>
+    </div>
+
+
     <div id='update'></div>
     <div id='new'></div>
     <div >
@@ -38,11 +45,12 @@
         <input type="submit" name="submit" value="Create New Item" class="submit">
       </form>
     </div>
-
+    <div  class='container item-list board'></div>
 
     <script defer src="src/index.js" charset="utf-8"></script>
     <script defer src="src/item.js" charset="utf-8"></script>
     <script defer src="src/app.js" charset="utf-8"></script>
     <script defer src="src/adapter.js" charset="utf-8"></script>
+    <script defer src="src/draggable.js" charset="utf-8"></script>
   </body>
 </html>

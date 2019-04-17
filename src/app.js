@@ -11,7 +11,6 @@ constructor() {
       document.querySelector('#update').innerHTML = item.renderUpdateForm();
       });
 
-
        document.querySelector('#update').addEventListener('submit', e => {
        e.preventDefault();
        const id = parseInt(e.target.dataset.id);

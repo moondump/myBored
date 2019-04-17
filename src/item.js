@@ -10,7 +10,7 @@ class Item {
 
   renderListItem() {
     return `
-    <div class="card item-list" data-id=${this.id}>
+    <div class="item-list moveable" id="${this.title}" data-id=${this.id}>
       <img class="item-list" src="${this.image}" alt="image" width="100" height="100" id="img">
     </div>`;
   }
@@ -30,9 +30,10 @@ class Item {
     return this.all.find(item => item.image === url);
   }
 
+
   renderUpdateForm() {
     return `
-    <form data-id=${this.id}>
+    <form data-id=${this.id} id="uform">
       <label>Title</label>
       <p>
         <input type="text" id="title" value="${this.title}"/>
@@ -50,8 +51,6 @@ class Item {
         <input id="image" type="text" value="${this.image}" />
       </p>
       <button type='submit'>Save Item</button>
-      <button type='button' id='delete'>Delete Item</button>
-      <button type='button' id="cancel">Cancel</button>
     </form>
   `;
   }
@@ -62,16 +61,10 @@ class Item {
    this.url = url;
    this.image = image;
  }
-
- delete(){
- deleteButton.addEventListener('click', () => {
- function removeElement(id) {
-     var item = document.getElementById(id);
-     return item.parentNode.removeChild(item);
- }
- })
-}
-
 }
 
 Item.all = [];
+
+let items = Item.all
+
+console.log(items)
