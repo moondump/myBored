@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     app.attachEventListeners();
 
     app.adapter.fetchItems().then(json => {
-      json.forEach(item => {
+      json.forEach((item, index) => {
         item = (new Item(item)).renderListItem();
         let list = document.querySelector('.item-list')
         list.appendChild(item)
 
-        dragElement(item)
+        dragElement(item, index * 100)
       });
     });
   });

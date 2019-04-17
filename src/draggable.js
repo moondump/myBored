@@ -5,19 +5,44 @@ for (let i = 0; i < draggables.length; i++) {
   dragElement(el);
 }
 
-function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    // otherwise, move the DIV from anywhere inside the DIV:
-    elmnt.onmousedown = dragMouseDown;
+function dragElement(element, yInitialOffset) {
+  console.log(element)
+  let rect = element.getBoundingClientRect() 
+  let pos1 = 0
+  let pos2 = 0
+  let pos3 = 0
+  let pos4 = 0
+
+  let initialX = 0
+  let initialY = 0
+  let mouseDownX = 0
+  let mouseDownY = 0
+
+  // otherwise, move the DIV from anywhere inside the DIV:
+  element.onmousedown = dragMouseDown;
 
 
   function dragMouseDown(e) {
-    elmnt.style.position = 'absolute'
     e = e || window.event;
     e.preventDefault();
     // get the mouse cursor position at startup:
-    pos3 = e.clientX;
-    pos4 = e.clientY;
+    let rect = element.getBoundingClientRect() 
+
+    initialX = element.offsetLeft
+    initialY = element.offsetTop
+
+    mouseDownX = e.clientX
+    mouseDownY = e.clientY
+
+    console.log('rect', rect.top, rect.left)
+    console.log('offset', element.offsetTop, element.offsetLeft)
+    console.log('mouse', e.clientX, e.clientY)
+
+    element.style.top = initialY + 'px'
+    element.style.left = initialX + 'px'
+
+    element.style.position = 'absolute'
+
     document.onmouseup = closeDragElement;
     // call a function whenever the cursor moves:
     document.onmousemove = elementDrag;
@@ -27,13 +52,17 @@ function dragElement(elmnt) {
     e = e || window.event;
     e.preventDefault();
     // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
+    let newMouseDownX = e.clientX
+    let newMouseDownY = e.clientY
+
+    let mouseDx = newMouseDownX - mouseDownX
+    let mouseDy = newMouseDownY - mouseDownY
+    console.log('dxdy', mouseDx, mouseDy)
+    console.log('addd', initialY + mouseDy)
+
     // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    element.style.top = (initialY + mouseDy) + 'px'
+    element.style.left = (initialX + mouseDx) + 'px'
   }
 
   function closeDragElement() {

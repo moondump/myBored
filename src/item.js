@@ -19,7 +19,7 @@ class Item {
     img.alt = 'image'
 
     item.appendChild(img)
-    return item;
+    return item
   }
 
   // <h3>${this.title}
