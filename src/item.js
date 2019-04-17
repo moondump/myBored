@@ -9,10 +9,17 @@ class Item {
   }
 
   renderListItem() {
-    return `
-    <div class="item-list moveable" id="${this.title}" data-id=${this.id}>
-      <img class="item-list" src="${this.image}" alt="image" width="100" height="100" id="img">
-    </div>`;
+    let item = document.createElement('div')
+    item.classList.add('item-list')
+    item.classList.add('moveable')
+    item.classList.add('draggable')
+
+    let img = document.createElement('img')
+    img.src = this.image
+    img.alt = 'image'
+
+    item.appendChild(img)
+    return item;
   }
 
   // <h3>${this.title}
