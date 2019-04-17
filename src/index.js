@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     app.adapter.fetchItems().then(json => {
       json.forEach(item => {
-        document.querySelector('#item-list').innerHTML += new Item(item).renderListItem();
+        document.querySelector('.item-list').innerHTML += new Item(item).renderListItem();
       });
     });
   });

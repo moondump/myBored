@@ -10,8 +10,8 @@ class Item {
 
   renderListItem() {
     return `
-    <div class="card" data-id=${this.id}>
-      <img src="${this.image}" alt="image" width="100" height="100" id="img">
+    <div class="card item-list" data-id=${this.id}>
+      <img class="item-list" src="${this.image}" alt="image" width="100" height="100" id="img">
     </div>`;
   }
 
@@ -24,6 +24,10 @@ class Item {
 
   static findById(id) {
     return this.all.find(item => item.id === id);
+  }
+
+  static findByPic(url){
+    return this.all.find(item => item.image === url);
   }
 
   renderUpdateForm() {

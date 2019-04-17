@@ -5,10 +5,9 @@ constructor() {
   }
 
   attachEventListeners() {
-    document.querySelector('#item-list').addEventListener('click', e => {
-      const id = parseInt(e.target.dataset.id);
-      const item = Item.findById(id);
-
+    document.querySelector('.item-list').addEventListener('click', e => {
+      const url = e.target.src
+      const item = Item.findByPic(url)
       document.querySelector('#update').innerHTML = item.renderUpdateForm();
       });
 
@@ -27,9 +26,9 @@ constructor() {
   });
 }
   addItems() {
-    document.querySelector('#item-list').innerHTML = '';
+    document.querySelector('.item-list').innerHTML = '';
     Item.all.forEach(
-      item => (document.querySelector('#item-list').innerHTML += item.renderListItem())
+      item => (document.querySelector('.item-list').innerHTML += item.renderListItem())
     );
   }
 
